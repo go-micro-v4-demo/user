@@ -1,13 +1,12 @@
 package main
 
 import (
-
 	"github.com/go-micro-v4-demo/user/handler"
 	pb "github.com/go-micro-v4-demo/user/proto"
 
 	"go-micro.dev/v4"
 	"go-micro.dev/v4/logger"
-
+	regs "go-micro.dev/v4/registry"
 )
 
 var (
@@ -17,11 +16,13 @@ var (
 
 func main() {
 	// Create service
-	srv := micro.NewService(
-	)
+	reg := regs.NewMemoryRegistry() //没存
+	srv := micro.NewService()
 	srv.Init(
 		micro.Name(service),
 		micro.Version(version),
+		micro.Address("0.0.0.0:8080"),
+		micro.Registry(reg),
 	)
 
 	// Register handler
