@@ -16,7 +16,7 @@ var (
 
 func main() {
 	// Create service
-	reg := regs.NewMemoryRegistry() //没存
+	reg := regs.NewMemoryRegistry() //memory registry
 	srv := micro.NewService()
 	srv.Init(
 		micro.Name(service),
